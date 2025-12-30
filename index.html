@@ -156,11 +156,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>📞 Toll-Free Number Verification</h1>
-        <p class="subtitle">Opt-in to verify your toll-free number and ensure compliance with carrier requirements.</p>
-        
+        <h1>🎮 Game Camera Update Opt-In</h1>
+        <p class="subtitle"><strong>This is totally optional!</strong> You are being asked to opt in to receive game camera updates for a specific camera ID. You may decline at any time.</p>
         <div class="info-box">
-            <p><strong>Why verify?</strong> Toll-free number verification helps prevent spam and ensures your calls are delivered reliably to your customers.</p>
+            <p><strong>What does this mean?</strong> If you opt in, you will receive updates related to the game camera for the camera ID you provide below. <strong>You are not required to opt in.</strong> If you do not wish to receive updates, simply click "No" below.</p>
         </div>
 
         <form id="optinForm">
@@ -170,8 +169,8 @@
             </div>
 
             <div class="form-group">
-                <label for="phone">Toll-Free Number *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="1-800-555-0100" pattern="^1?[-.\s]?(\(8[0-8][0-8]\)|8[0-8][0-8])[-.\s]?\d{3}[-.\s]?\d{4}$" title="Please enter a valid toll-free number (e.g., 1-800-555-0100)">
+                <label for="cameraId">Camera ID *</label>
+                <input type="text" id="cameraId" name="cameraId" required placeholder="e.g., CAM12345">
             </div>
 
             <div class="form-group">
@@ -179,21 +178,22 @@
                 <input type="email" id="email" name="email" required placeholder="you@example.com">
             </div>
 
-            <div class="form-group">
-                <label for="company">Company Name</label>
-                <input type="text" id="company" name="company" placeholder="Your Company Inc.">
-            </div>
-
             <div class="checkbox-group">
                 <input type="checkbox" id="consent" name="consent" required>
-                <label for="consent" class="checkbox-label">I consent to verify my toll-free number and agree to comply with applicable telecommunications regulations. *</label>
+                <label for="consent" class="checkbox-label">I agree to receive game camera updates for the camera ID provided above. <strong>This is optional.</strong></label>
             </div>
 
-            <button type="submit" class="submit-btn">Submit Opt-In Request</button>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" class="submit-btn" style="flex:1;">Yes, Opt Me In</button>
+                <button type="button" id="noBtn" class="submit-btn" style="flex:1; background: #eee; color: #333; border: 1px solid #ccc;">No, I Do Not Want Updates</button>
+            </div>
         </form>
 
         <div id="successMessage" class="success-message">
             ✓ Thank you! Your opt-in request has been submitted successfully.
+        </div>
+        <div id="noMessage" class="success-message" style="background: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
+            You have chosen <strong>not</strong> to receive game camera updates. No information has been submitted.
         </div>
     </div>
 
@@ -202,31 +202,43 @@
 
         document.getElementById('optinForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             // Get form data
             const formData = {
                 name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
+                cameraId: document.getElementById('cameraId').value,
                 email: document.getElementById('email').value,
-                company: document.getElementById('company').value,
                 consent: document.getElementById('consent').checked,
                 timestamp: new Date().toISOString()
             };
-
             // In a production environment, send this data to a server/API endpoint
             // Example: fetch('/api/optin', { method: 'POST', body: JSON.stringify(formData) })
-
             // Show success message
             document.getElementById('successMessage').classList.add('show');
-            
             // Hide form
             this.style.display = 'none';
-
+            // Hide "No" message if visible
+            document.getElementById('noMessage').classList.remove('show');
             // Optional: Reset form after a delay
             setTimeout(() => {
                 this.reset();
                 this.style.display = 'block';
                 document.getElementById('successMessage').classList.remove('show');
+            }, AUTO_RESET_DELAY);
+        });
+
+        // Handle "No" button
+        document.getElementById('noBtn').addEventListener('click', function() {
+            // Hide form
+            document.getElementById('optinForm').style.display = 'none';
+            // Hide success message if visible
+            document.getElementById('successMessage').classList.remove('show');
+            // Show "No" message
+            document.getElementById('noMessage').classList.add('show');
+            // Reset form after a delay
+            setTimeout(() => {
+                document.getElementById('optinForm').reset();
+                document.getElementById('optinForm').style.display = 'block';
+                document.getElementById('noMessage').classList.remove('show');
             }, AUTO_RESET_DELAY);
         });
 
