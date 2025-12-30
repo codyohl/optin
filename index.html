@@ -171,7 +171,7 @@
 
             <div class="form-group">
                 <label for="phone">Toll-Free Number *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="1-800-555-0100" pattern="[0-9\-\+\(\)\s]+">
+                <input type="tel" id="phone" name="phone" required placeholder="1-800-555-0100" pattern="^1?[-.\s]?(\(8[0-8][0-8]\)|8[0-8][0-8])[-.\s]?\d{3}[-.\s]?\d{4}$" title="Please enter a valid toll-free number (e.g., 1-800-555-0100)">
             </div>
 
             <div class="form-group">
@@ -198,6 +198,8 @@
     </div>
 
     <script>
+        const AUTO_RESET_DELAY = 5000; // 5 seconds
+
         document.getElementById('optinForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -211,8 +213,8 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Log the form data (in a real application, you would send this to a server)
-            console.log('Form submitted:', formData);
+            // In a production environment, send this data to a server/API endpoint
+            // Example: fetch('/api/optin', { method: 'POST', body: JSON.stringify(formData) })
 
             // Show success message
             document.getElementById('successMessage').classList.add('show');
@@ -225,7 +227,7 @@
                 this.reset();
                 this.style.display = 'block';
                 document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
+            }, AUTO_RESET_DELAY);
         });
 
         // Add input validation feedback
