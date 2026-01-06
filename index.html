@@ -152,11 +152,117 @@
             line-height: 1.6;
             margin: 0;
         }
+
+        .business-info,
+        .contact-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .business-info h2,
+        .contact-info h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .business-info h3 {
+            color: #555;
+            font-size: 16px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .business-info p,
+        .contact-info p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .business-info ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .business-info li {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 5px;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎮 Game Camera Update Opt-In</h1>
+        <h1>🎮 Game Camera Notifications</h1>
+        <p class="subtitle">Professional game camera notification service by Cody Ohlsen</p>
+        
+        <!-- Business Information Section -->
+        <div class="business-info">
+            <h2>About Our Service</h2>
+            <p>We provide real-time text message notifications for your trail and game cameras. Never miss important wildlife activity or security events on your property.</p>
+            
+            <h3>How It Works</h3>
+            <ul>
+                <li>Connect your compatible game camera to our notification system</li>
+                <li>Receive instant SMS alerts when motion is detected</li>
+                <li>Get image notifications directly to your phone</li>
+                <li>Monitor multiple camera locations from anywhere</li>
+            </ul>
+            
+            <h3>Service Features</h3>
+            <ul>
+                <li>Real-time SMS notifications</li>
+                <li>Multi-camera support</li>
+                <li>Customizable alert preferences</li>
+                <li>Reliable delivery via toll-free messaging</li>
+            </ul>
+        </div>
+        
+        <!-- Contact Information Section -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>Business Owner:</strong> Cody Ohlsen</p>
+            <p><strong>Address:</strong> 28830 Old Owen Road, Monroe, WA 98272</p>
+            <p><strong>Phone:</strong> <a href="tel:+13607224764">360-722-4764</a></p>
+            <p><strong>Email:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
+            <p><strong>Business Type:</strong> Sole Proprietor</p>
+        </div>
+        
+        <!-- Opt-In Form Section -->
+        <h2>Opt-In to Receive Notifications</h2>
         <p class="subtitle"><strong>This is totally optional!</strong> You are being asked to opt in to receive game camera updates for a specific camera ID. You may decline at any time.</p>
         <div class="info-box">
             <p><strong>What does this mean?</strong> If you opt in, you will receive updates related to the game camera for the camera ID you provide below. <strong>You are not required to opt in.</strong> If you do not wish to receive updates, simply click "No" below.</p>
@@ -194,6 +300,14 @@
         </div>
         <div id="noMessage" class="success-message" style="background: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
             You have chosen <strong>not</strong> to receive game camera updates. No information has been submitted.
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2026 Cody Ohlsen - Game Camera Notifications. All rights reserved.</p>
+            <p>
+                <a href="terms.html">Terms of Service</a> |
+                <a href="privacy.html">Privacy Policy</a>
+            </p>
         </div>
     </div>
 
